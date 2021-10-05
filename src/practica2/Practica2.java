@@ -7,7 +7,7 @@ public class Practica2 {
     public static void main(String[] args) {
         
         
-        Menu menu = new Menu();
+        PantallaJuego menu = new PantallaJuego();
         
         
     }

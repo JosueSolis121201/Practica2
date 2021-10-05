@@ -8,11 +8,18 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Random;
+import practica2.logica.Cronometro;
+import practica2.logica.LogicaCronometroVerde;
 
 
 public class PantallaJuego {
     
-    
+        
         public JFrame menu;
         public JPanel panelPrincipal;
         public JPanel vertical1;
@@ -23,8 +30,16 @@ public class PantallaJuego {
         public JPanel horizontal2;
         public JPanel horizontal3;
         
+        //Cronometros
+        JLabel CronometroLabel;
+        public static Point location = new Point(0,0);
+        public static LogicaCronometroVerde cronometroVerde;
+
+        public static int x, y;
         
+        //Temporizador
         
+        public static Cronometro temporizador;
         
         
         
@@ -44,11 +59,13 @@ public class PantallaJuego {
         JLabel label = new JLabel("Tiempo");
         label.setBounds(20, 15, 100, 50);
         
+         JLabel labe3 = new JLabel("<00>");
+        labe3.setBounds(20, 30, 100, 50);
+        
         JLabel labe2 = new JLabel("Movimientos");
         labe2.setBounds(100, 15, 100, 50);
         
-        JLabel labe3 = new JLabel("<00>");
-        labe3.setBounds(20, 30, 100, 50);
+       
         
         JLabel labe4 = new JLabel("<000>");
         labe4.setBounds(100, 30, 100, 50);
@@ -96,18 +113,20 @@ public class PantallaJuego {
         this.panelPrincipal.add(vertical3);
         this.panelPrincipal.add(horizontal3);
         
-        this.PantallaJuego();
+         
         
+
+        this.Cronometros();
+        this.PantallaJuego();
+        this.Temporizador();
         }
         
          public void PantallaJuego(){
         
             JButton btnMovIzquierda1 = new JButton("<");
-            //logica.filtrarClientes(texto1.getText(), texto3.getText(), texto2.getText(), texto4.getText(), comboFiltroUno);
 
             btnMovIzquierda1.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
-                    // logica.filtrarClientes(texto1.getText(), texto3.getText(), texto2.getText(), texto4.getText(), comboFiltroUno);
                 }
             }
             );
@@ -116,11 +135,9 @@ public class PantallaJuego {
             this.panelPrincipal.add(btnMovIzquierda1);
 
             JButton btnMovDerecha1 = new JButton(">");
-            //logica.filtrarClientes(texto1.getText(), texto3.getText(), texto2.getText(), texto4.getText(), comboFiltroUno);
 
             btnMovDerecha1.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
-                    // logica.filtrarClientes(texto1.getText(), texto3.getText(), texto2.getText(), texto4.getText(), comboFiltroUno);
                 }
             }
             );
@@ -129,11 +146,9 @@ public class PantallaJuego {
             this.panelPrincipal.add(btnMovDerecha1);
             
            JButton btnMovIzquierda2 = new JButton("<");
-            //logica.filtrarClientes(texto1.getText(), texto3.getText(), texto2.getText(), texto4.getText(), comboFiltroUno);
 
             btnMovIzquierda2.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
-                    // logica.filtrarClientes(texto1.getText(), texto3.getText(), texto2.getText(), texto4.getText(), comboFiltroUno);
                 }
             }
             );
@@ -142,11 +157,9 @@ public class PantallaJuego {
             this.panelPrincipal.add(btnMovIzquierda2);
 
             JButton btnMovDerecha2 = new JButton(">");
-            //logica.filtrarClientes(texto1.getText(), texto3.getText(), texto2.getText(), texto4.getText(), comboFiltroUno);
 
             btnMovDerecha2.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
-                    // logica.filtrarClientes(texto1.getText(), texto3.getText(), texto2.getText(), texto4.getText(), comboFiltroUno);
                 }
             }
             );
@@ -200,8 +213,33 @@ public class PantallaJuego {
             btnSalir.setBounds(650, 400, 75, 25);
             this.panelPrincipal.add(btnSalir);
             
+            
+            
+
+            
+            
+            
            
         }
-        
-       
+         
+         public void Cronometros(){
+         
+
+            cronometroVerde = new LogicaCronometroVerde(location);
+            cronometroVerde.setLocation(50, 100);
+            Thread t1 =new Thread(cronometroVerde);    
+            t1.start();
+            
+            this.panelPrincipal.add(cronometroVerde);
+         
+         
+         }
+         
+         public  void Temporizador (){
+             
+            
+         
+         
+         }
+
 }
