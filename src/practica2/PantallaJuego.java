@@ -18,13 +18,23 @@ import practica2.logica.LogicaCronometroVerde;
 
 
 public class PantallaJuego {
+        
+        private JLabel[] discos1;
     
+          //Discos Perforados
+        private JLabel DiscoPerforado1;
+        private JLabel DiscoPerforado2;
+        private JLabel DiscoPerforado3;
+        private JLabel DiscoPerforado4;
+        private JLabel DiscoPerforado5;
+        private JLabel DiscoPerforado6;
+        private JLabel DiscoPerforado7;
         
         public JFrame menu;
         public JPanel panelPrincipal;
-        public JPanel vertical1;
-        public JPanel vertical2;
-        public JPanel vertical3;
+        public JLabel vertical1;
+        public JLabel vertical2;
+        public JLabel vertical3;
         
         public JPanel horizontal1;
         public JPanel horizontal2;
@@ -41,7 +51,72 @@ public class PantallaJuego {
         
         public  Cronometro temporizador;
         
-        
+      
+         
+      
+        public void crearCosas(){
+            this.discos1 = new JLabel[7];
+            
+            int dimX=160;
+            int dimY=15;
+            int posX=150;
+            int posY=285;
+            for(int i=0;i<this.discos1.length;i++){
+                this.discos1[i] = new JLabel();
+                this.discos1[i].setBounds(posX, posY, dimX, dimY);
+                
+                posX=posX+10;
+                posY=posY-15;
+                
+                dimX=dimX-20;
+                
+                        
+                switch(i){
+                    case 0:
+                        this.discos1[i].setBackground(Color.BLUE);
+
+                        break;
+
+                    case 1:
+                        this.discos1[i].setBackground(Color.CYAN);
+
+                        break;
+                    case 2:
+                        this.discos1[i].setBackground(Color.ORANGE);
+
+                        break;  
+                        
+                     case 3:
+                        this.discos1[i].setBackground(Color.MAGENTA);
+
+                        break;  
+                        
+                    case 4:
+                        this.discos1[i].setBackground(Color.YELLOW);
+
+                        break;  
+                    
+                    case 5:
+                        this.discos1[i].setBackground(Color.RED);
+
+                        break; 
+                        
+                    case 6:
+                        this.discos1[i].setBackground(Color.black);
+
+                        break;      
+                 }
+                
+                
+                
+                this.discos1[i].setOpaque(true);
+                this.panelPrincipal.add(this.discos1[i]);
+
+            }
+            
+            
+        }
+      
         
         
         public PantallaJuego(){
@@ -55,6 +130,9 @@ public class PantallaJuego {
         this.panelPrincipal.setBounds(0, 0, 800, 500);
         this.panelPrincipal.setBackground(Color.white);
         this.panelPrincipal.setLayout(null);
+        
+       
+        crearCosas();
         
         JLabel label = new JLabel("Tiempo");
         label.setBounds(20, 15, 100, 50);
@@ -74,19 +152,22 @@ public class PantallaJuego {
         labe4.setBounds(100, 30, 100, 50);
         
         
-        this.vertical1 = new JPanel();
+        this.vertical1 = new JLabel();
         this.vertical1.setBounds(225, 100, 10, 200);
         this.vertical1.setBackground(Color.LIGHT_GRAY);
+        this.vertical1.setOpaque(true);
         this.vertical1.setLayout(null);
+        
         
         this.horizontal1 = new JPanel();
         this.horizontal1.setBounds(150, 300, 160, 10);
         this.horizontal1.setBackground(Color.DARK_GRAY);
         this.horizontal1.setLayout(null);
         
-        this.vertical2 = new JPanel();
+        this.vertical2 = new JLabel();
         this.vertical2.setBounds(425, 100, 10, 200);
         this.vertical2.setBackground(Color.LIGHT_GRAY);
+        this.vertical2.setOpaque(true);
         this.vertical2.setLayout(null);
         
         this.horizontal2 = new JPanel();
@@ -94,15 +175,24 @@ public class PantallaJuego {
         this.horizontal2.setBackground(Color.DARK_GRAY);
         this.horizontal2.setLayout(null);
         
-        this.vertical3 = new JPanel();
+        this.vertical3 = new JLabel();
         this.vertical3.setBounds(625, 100, 10, 200);
         this.vertical3.setBackground(Color.LIGHT_GRAY);
+        this.vertical3.setOpaque(true);
+        
         this.vertical3.setLayout(null);
         
         this.horizontal3 = new JPanel();
         this.horizontal3.setBounds(550, 300, 160, 10);
         this.horizontal3.setBackground(Color.DARK_GRAY);
         this.horizontal3.setLayout(null);
+        
+         
+        
+        
+        
+        
+      
         
         this.menu.add(panelPrincipal);
         this.panelPrincipal.add(label);
@@ -116,7 +206,8 @@ public class PantallaJuego {
         this.panelPrincipal.add(vertical3);
         this.panelPrincipal.add(horizontal3);
         
-         
+        
+       
         
 
         this.Cronometros();
