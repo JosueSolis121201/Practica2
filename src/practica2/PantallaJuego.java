@@ -39,7 +39,7 @@ public class PantallaJuego {
         
         //Temporizador
         
-        public static Cronometro temporizador;
+        public  Cronometro temporizador;
         
         
         
@@ -61,6 +61,9 @@ public class PantallaJuego {
         
          JLabel labe3 = new JLabel("<00>");
         labe3.setBounds(20, 30, 100, 50);
+        this.temporizador= new Cronometro(labe3);
+        this.temporizador.start();
+        
         
         JLabel labe2 = new JLabel("Movimientos");
         labe2.setBounds(100, 15, 100, 50);
@@ -118,7 +121,8 @@ public class PantallaJuego {
 
         this.Cronometros();
         this.PantallaJuego();
-        this.Temporizador();
+        
+        this.menu.repaint();
         }
         
          public void PantallaJuego(){
@@ -225,7 +229,7 @@ public class PantallaJuego {
          public void Cronometros(){
          
 
-            cronometroVerde = new LogicaCronometroVerde(location);
+            cronometroVerde = new LogicaCronometroVerde(location,temporizador);
             cronometroVerde.setLocation(50, 100);
             Thread t1 =new Thread(cronometroVerde);    
             t1.start();
@@ -235,11 +239,5 @@ public class PantallaJuego {
          
          }
          
-         public  void Temporizador (){
-             
-            
          
-         
-         }
-
 }

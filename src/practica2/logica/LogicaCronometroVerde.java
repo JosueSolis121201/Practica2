@@ -2,6 +2,8 @@
 package practica2.logica;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import practica2.PantallaJuego;
 
 
@@ -15,24 +17,36 @@ public class LogicaCronometroVerde extends JLabel implements Runnable  {
     
     private ImageIcon iconoRojo;
     private ImageIcon iconoVerde;
-
+    private Cronometro cronometro;
 
     
-    public LogicaCronometroVerde (Point location){
+    public LogicaCronometroVerde (Point location,Cronometro cronometro){
         
         
         this.iconoRojo = new ImageIcon("CronometroRojo.png");
         this.iconoVerde = new ImageIcon("CronometroVerde.png");
-        
+        this.cronometro = cronometro;
         
         this.setIcon(this.iconoVerde);
         this.setSize(50,50);
         this.location = location;
         this.verde = false;
-
         
         
         
+        this.addMouseListener(new MouseAdapter()  
+            {  
+                public void mouseClicked(MouseEvent e)  
+                {  
+                    if(verde==true){
+                        
+                        cronometro.Disminuir();
+                   }else{
+                       cronometro.incrementar();
+                      
+                   }
+                }  
+            }); 
        
 
     }
@@ -41,45 +55,25 @@ public class LogicaCronometroVerde extends JLabel implements Runnable  {
         boolean posicion = true;
 
         while (posicion) {
-
+            if(this.verde==true){
+                 this.setIcon(this.iconoVerde);
+                 this.verde = false;
+                 
+            }else{
+                this.setIcon(this.iconoRojo);
+                this.verde=true;
+            }
+            
+            
             if (PantallaJuego.cronometroVerde.getY() <= 500) {
                 PantallaJuego.cronometroVerde.setLocation(PantallaJuego.cronometroVerde.getX(), PantallaJuego.cronometroVerde.getY() + 7);
-
-                
-                if (PantallaJuego.cronometroVerde.getY() >=100) {
-                   this.setIcon(this.iconoVerde);
-                }
-                
-                if (PantallaJuego.cronometroVerde.getY() >=200) {
-                   this.setIcon(this.iconoRojo);
-                }
-                
-                if (PantallaJuego.cronometroVerde.getY() >=300) {
-                   this.setIcon(this.iconoVerde);
-                }
-                
-                 if (PantallaJuego.cronometroVerde.getY() >=400) {
-                   this.setIcon(this.iconoRojo);
-                }
-                
-                if (PantallaJuego.cronometroVerde.getY() >=450) {
-                   this.setIcon(this.iconoVerde);
-                }
-                
-                if (PantallaJuego.cronometroVerde.getY() >=500) {
-                   this.setIcon(this.iconoRojo);
-                }
-                
-                if (PantallaJuego.cronometroVerde.getY() >= 500) {
-                    y = -400;
-                    PantallaJuego.cronometroVerde.setLocation(PantallaJuego.cronometroVerde.getX(), PantallaJuego.cronometroVerde.getY() + y);
-
-                }
-
+            }else{
+                 y = -400;
+                 PantallaJuego.cronometroVerde.setLocation(PantallaJuego.cronometroVerde.getX(), PantallaJuego.cronometroVerde.getY() + y);
             }
 
             try {
-                Thread.sleep(30);
+                    Thread.sleep(700);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
