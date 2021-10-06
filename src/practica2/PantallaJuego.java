@@ -14,27 +14,28 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Random;
 import practica2.logica.Cronometro;
+import practica2.logica.LogicaBotones;
 import practica2.logica.LogicaCronometroVerde;
 
 
 public class PantallaJuego {
         
-        private JLabel[] discos1;
+        public JLabel[] pilar1;
+        public JLabel[] pilar2;
+        public JLabel[] pilar3;
     
-          //Discos Perforados
-        private JLabel DiscoPerforado1;
-        private JLabel DiscoPerforado2;
-        private JLabel DiscoPerforado3;
-        private JLabel DiscoPerforado4;
-        private JLabel DiscoPerforado5;
-        private JLabel DiscoPerforado6;
-        private JLabel DiscoPerforado7;
+
         
         public JFrame menu;
         public JPanel panelPrincipal;
         public JLabel vertical1;
         public JLabel vertical2;
         public JLabel vertical3;
+        
+        
+        public LogicaBotones botones;
+        
+        public JLabel labe4;
         
         public JPanel horizontal1;
         public JPanel horizontal2;
@@ -50,77 +51,14 @@ public class PantallaJuego {
         //Temporizador
         
         public  Cronometro temporizador;
+      
+        public int movimientos;
         
-      
-         
-      
-        public void crearCosas(){
-            this.discos1 = new JLabel[7];
-            
-            int dimX=160;
-            int dimY=15;
-            int posX=150;
-            int posY=285;
-            for(int i=0;i<this.discos1.length;i++){
-                this.discos1[i] = new JLabel();
-                this.discos1[i].setBounds(posX, posY, dimX, dimY);
-                
-                posX=posX+10;
-                posY=posY-15;
-                
-                dimX=dimX-20;
-                
-                        
-                switch(i){
-                    case 0:
-                        this.discos1[i].setBackground(Color.BLUE);
-
-                        break;
-
-                    case 1:
-                        this.discos1[i].setBackground(Color.CYAN);
-
-                        break;
-                    case 2:
-                        this.discos1[i].setBackground(Color.ORANGE);
-
-                        break;  
-                        
-                     case 3:
-                        this.discos1[i].setBackground(Color.MAGENTA);
-
-                        break;  
-                        
-                    case 4:
-                        this.discos1[i].setBackground(Color.YELLOW);
-
-                        break;  
-                    
-                    case 5:
-                        this.discos1[i].setBackground(Color.RED);
-
-                        break; 
-                        
-                    case 6:
-                        this.discos1[i].setBackground(Color.black);
-
-                        break;      
-                 }
-                
-                
-                
-                this.discos1[i].setOpaque(true);
-                this.panelPrincipal.add(this.discos1[i]);
-
-            }
-            
-            
-        }
-      
         
         
         public PantallaJuego(){
         
+            
         this.menu = new JFrame("Torres de Hanoi");
         this.menu.setVisible(true);
         this.menu.setBounds(0, 0, 800, 500);
@@ -132,7 +70,11 @@ public class PantallaJuego {
         this.panelPrincipal.setLayout(null);
         
        
-        crearCosas();
+       this.movimientos=0;
+        
+        crearPilares();
+        this.botones = new LogicaBotones(this.pilar1,this.pilar2,this.pilar3) ;
+        
         
         JLabel label = new JLabel("Tiempo");
         label.setBounds(20, 15, 100, 50);
@@ -145,11 +87,11 @@ public class PantallaJuego {
         
         JLabel labe2 = new JLabel("Movimientos");
         labe2.setBounds(100, 15, 100, 50);
-        
        
         
-        JLabel labe4 = new JLabel("<000>");
+        this.labe4 = new JLabel(Integer.toString(movimientos));
         labe4.setBounds(100, 30, 100, 50);
+        
         
         
         this.vertical1 = new JLabel();
@@ -222,6 +164,12 @@ public class PantallaJuego {
 
             btnMovIzquierda1.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
+                    
+                   
+
+                    
+                    
+                    
                 }
             }
             );
@@ -233,6 +181,14 @@ public class PantallaJuego {
 
             btnMovDerecha1.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
+                    
+                       
+                       
+                       if(botones.BotonDerecha()==true){
+                         movimientos++;
+                         labe4.setText(movimientos+"");
+                     }
+                       
                 }
             }
             );
@@ -244,6 +200,12 @@ public class PantallaJuego {
 
             btnMovIzquierda2.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
+                    
+                      
+                       if(botones.BotonIzquierda()==true){
+                         movimientos++;
+                         labe4.setText(movimientos+"");
+                     }
                 }
             }
             );
@@ -255,6 +217,13 @@ public class PantallaJuego {
 
             btnMovDerecha2.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
+                    
+                   
+                    
+                    if(botones.BotonDerecha2()==true){
+                         movimientos++;
+                         labe4.setText(movimientos+"");
+                     }
                 }
             }
             );
@@ -268,11 +237,17 @@ public class PantallaJuego {
             
             
             JButton btnMovIzquierda3 = new JButton("<");
-            //logica.filtrarClientes(texto1.getText(), texto3.getText(), texto2.getText(), texto4.getText(), comboFiltroUno);
 
             btnMovIzquierda3.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
-                    // logica.filtrarClientes(texto1.getText(), texto3.getText(), texto2.getText(), texto4.getText(), comboFiltroUno);
+                     if(botones.BotonIzquierda2()==true){
+                         movimientos++;
+                         labe4.setText(movimientos+"");
+                         
+                          
+                     }
+                     
+                     
                 }
             }
             );
@@ -330,5 +305,83 @@ public class PantallaJuego {
          
          }
          
+         public void crearPilares(){
+            this.pilar1 = new JLabel[7];
+            this.pilar2 = new JLabel[7];
+            this.pilar3 = new JLabel[7];
+            
+            int dimX=160;
+            int dimY=15;
+            int posX=150;
+            int posY=285;
+            for(int i=0;i<this.pilar1.length;i++){
+                this.pilar1[i] = new JLabel();
+                this.pilar1[i].setBounds(posX, posY, dimX, dimY);
+                
+                posX=posX+10;
+                posY=posY-15;
+                
+                dimX=dimX-20;
+                
+                        
+                switch(i){
+                    case 0:
+                        this.pilar1[i].setBackground(Color.BLUE);
+
+                        break;
+
+                    case 1:
+                        this.pilar1[i].setBackground(Color.CYAN);
+
+                        break;
+                    case 2:
+                        this.pilar1[i].setBackground(Color.ORANGE);
+
+                        break;  
+                        
+                     case 3:
+                        this.pilar1[i].setBackground(Color.MAGENTA);
+
+                        break;  
+                        
+                    case 4:
+                        this.pilar1[i].setBackground(Color.YELLOW);
+
+                        break;  
+                    
+                    case 5:
+                        this.pilar1[i].setBackground(Color.RED);
+
+                        break; 
+                        
+                    case 6:
+                        this.pilar1[i].setBackground(Color.black);
+
+                        break;      
+                 }
+                
+                
+                
+                this.pilar1[i].setOpaque(true);
+                this.panelPrincipal.add(this.pilar1[i]);
+                
+                
+                
+                
+
+            }
+            
+          
+            
+            
+            
+        }
+      
          
-}
+            
+         
+         
+         
+            
+        }
+         
