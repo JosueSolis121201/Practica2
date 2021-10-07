@@ -190,4 +190,83 @@ public boolean BotonIzquierda2(){
 
 
 
+
+
+public boolean BotonIzquierda3(){
+    
+         
+         
+    for (int i = pilar1.length-1; i >= 0; i--) {
+        if (pilar1[i] != null) {
+
+            for (int k = 0; k < pilar3.length; k++) {
+                
+                
+
+                if (pilar3[k] == null) {
+                    if(k!=0){
+                        if(pilar3[k-1].getWidth()<pilar1[i].getWidth()){
+                            JOptionPane.showMessageDialog(null, "No se puede realizar ese movimiento");
+                            
+                            return false;
+                        }
+                    }
+                    pilar1[i].setLocation(pilar1[i].getX() + 400,180+15*(this.cntDisco+1 - k));
+                    pilar3[k]=pilar1[i];
+                    pilar1[i] = null;
+                     this.movimientos++;
+                        return true;
+                    
+
+                    }
+
+                }
+
+            }
+        
+        }
+    
+       return false;
+
+    }
+
+
+
+public boolean BotonDerecha3(){
+    
+         
+         
+    for (int i = pilar3.length-1; i >= 0; i--) {
+        if (pilar3[i] != null) {
+
+            for (int k = 0; k < pilar1.length; k++) {
+                
+                
+
+                if (pilar1[k] == null) {
+                    if(k!=0){
+                        if(pilar1[k-1].getWidth()<pilar3[i].getWidth()){
+                            JOptionPane.showMessageDialog(null, "No se puede realizar ese movimiento");
+                            return false;
+                        }
+                    }
+                    pilar3[i].setLocation(pilar3[i].getX() - 400, (pilar3[i].getY()*0)+180+15*(this.cntDisco+1 - k));
+                    pilar1[k]=pilar3[i];
+                    pilar3[i] = null;
+                    this.movimientos++;
+
+                     return true;
+                    
+
+                    }
+
+                }
+
+            }
+
+        }
+        return false;
+    }
+
+
 }

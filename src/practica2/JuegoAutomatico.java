@@ -20,6 +20,8 @@ public class JuegoAutomatico {
         
         public JuegoAutomatico(){
         
+            
+            
         
         this.menu = new JFrame("Torres de Hanoi");
         this.menu.setVisible(true);
@@ -44,11 +46,9 @@ public class JuegoAutomatico {
         labe4.setBounds(100, 30, 100, 50);
         
         JButton btnRegresar = new JButton("Regresar");
-            //logica.filtrarClientes(texto1.getText(), texto3.getText(), texto2.getText(), texto4.getText(), comboFiltroUno);
 
             btnRegresar.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
-                    // logica.filtrarClientes(texto1.getText(), texto3.getText(), texto2.getText(), texto4.getText(), comboFiltroUno);
                 }
             }
             );
@@ -59,11 +59,9 @@ public class JuegoAutomatico {
             
             
          JButton btnIncicar = new JButton("Iniciar");
-            //logica.filtrarClientes(texto1.getText(), texto3.getText(), texto2.getText(), texto4.getText(), comboFiltroUno);
 
             btnIncicar.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
-                    // logica.filtrarClientes(texto1.getText(), texto3.getText(), texto2.getText(), texto4.getText(), comboFiltroUno);
                 }
             }
             );

@@ -24,7 +24,6 @@ public class Configuracion {
         
         public Configuracion(){
         
-        
         this.menu = new JFrame("Torres de Hanoi");
         this.menu.setVisible(true);
         this.menu.setBounds(0, 0, 800, 300);
@@ -44,18 +43,16 @@ public class Configuracion {
         JLabel labe3 = new JLabel("Tiempo de partida");
         labe3.setBounds(550, 55, 500, 50);
         
-        JTextField texto4 = new JTextField("");
+        JTextField texto4 = new JTextField("120");
         texto4.setBounds(550, 100, 150, 20);
         this.panelPrincipal.add(texto4);
         
         
         
         JButton btnSalir = new JButton("Salir");
-            //logica.filtrarClientes(texto1.getText(), texto3.getText(), texto2.getText(), texto4.getText(), comboFiltroUno);
 
             btnSalir.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
-                    // logica.filtrarClientes(texto1.getText(), texto3.getText(), texto2.getText(), texto4.getText(), comboFiltroUno);
                 }
             }
             );
@@ -66,21 +63,28 @@ public class Configuracion {
             
             
          JButton btnGuardar = new JButton("Guardar");
-            //logica.filtrarClientes(texto1.getText(), texto3.getText(), texto2.getText(), texto4.getText(), comboFiltroUno);
 
-            btnGuardar.addActionListener(new ActionListener() {
-                public void actionPerformed(ActionEvent e) {
-                    // logica.filtrarClientes(texto1.getText(), texto3.getText(), texto2.getText(), texto4.getText(), comboFiltroUno);
-                }
-            }
-            );
+           
 
             btnGuardar.setBounds(350, 200, 100, 25);
             this.panelPrincipal.add(btnGuardar);    
             
             
-            JComboBox cantidadDeDiscos = new JComboBox();
-        cantidadDeDiscos.setBounds(100, 100, 150, 20);
+            String[] discos = { "3", "4", "5", "6", "7" };
+            JComboBox cantidadDeDiscos = new JComboBox(discos);
+             cantidadDeDiscos.setSelectedIndex(4);
+            cantidadDeDiscos.setBounds(100, 100, 150, 20);
+            
+            
+             btnGuardar.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    
+                    texto4.getText();
+                    cantidadDeDiscos.getSelectedItem();
+                    
+                }
+            }
+            );
         
         this.menu.add(panelPrincipal);
         this.panelPrincipal.add(label);

@@ -166,6 +166,14 @@ public class PantallaJuego {
                 public void actionPerformed(ActionEvent e) {
                     
                    
+                    
+                       
+                       
+                       if(botones.BotonIzquierda3()==true){
+                         movimientos++;
+                         labe4.setText(movimientos+"");
+                     }
+                       
 
                     
                     
@@ -260,6 +268,22 @@ public class PantallaJuego {
 
             btnMovDerecha3.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
+                    
+                    
+                    
+                    
+                   
+                    
+                       
+                       
+                       if(botones.BotonDerecha3()==true){
+                         movimientos++;
+                         labe4.setText(movimientos+"");
+                     }
+
+                    
+                    
+                    
                     // logica.filtrarClientes(texto1.getText(), texto3.getText(), texto2.getText(), texto4.getText(), comboFiltroUno);
                 }
             }
